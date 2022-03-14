@@ -112,7 +112,24 @@ function moveBall(){
     checkForCollisions()
 }
 
-timerId = setInterval(moveBall, 30);
+function addStartPannel(){
+    const startBtnCont = document.createElement('div');
+    startBtnCont.classList.add('start-overlay')
+    grid.appendChild(startBtnCont);
+    const startBtn = document.createElement('button');
+    startBtn.innerHTML = 'Play';
+    startBtn.classList.add('start-btn')
+    startBtnCont.appendChild(startBtn);
+
+    startBtn.onclick = ()=>{
+        startBtnCont.remove();
+        timerId = setInterval(moveBall, 10);
+    }
+
+}
+
+addStartPannel();
+
 
 // check collisions 
 function checkForCollisions(){
@@ -182,3 +199,5 @@ function changeDirection(){
         return
     }
 }
+
+
